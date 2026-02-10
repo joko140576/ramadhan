@@ -1,0 +1,83 @@
+function doPost(e) {
+  const sheet = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getSheetByName("DATA");
+
+  const data = JSON.parse(e.postData.contents);
+
+  const total =
+    data.puasa +
+    data.subuh +
+    data.zuhur +
+    data.asar +
+    data.magrib +
+    data.isya +
+    data.tarawih +
+    data.duha +
+    data.tahajud +
+    data.rawatib +
+    data.quran;
+
+  sheet.appendRow([
+    data.tanggal,
+    data.nama,
+    data.puasa,
+    data.subuh,
+    data.zuhur,
+    data.asar,
+    data.magrib,
+    data.isya,
+    data.tarawih,
+    data.duha,
+    data.tahajud,
+    data.rawatib,
+    data.quran,
+    total
+  ]);
+
+  return ContentService
+    .createTextOutput(
+      JSON.stringify({ status: "success" })
+    )
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+
+function doGet(e){
+
+  if(e.parameter.mode == "dashboard"){
+
+    const sh = SpreadsheetApp.openById("1LcYMxAwkS1NS6wA0GmSDJzQjQ9-duwTudBtoOdelTDg")
+                .getSheetByName("DATA");
+
+    const data = sh.getDataRange().getValues();
+    data.shift(); // hapus header
+
+    let result = {};
+
+    data.forEach(r => {
+
+      const nama = r[1]; // kolom nama
+      const total = r.slice(2).reduce((a,b)=>a+b,0);
+
+      if(!result[nama]) result[nama]=0;
+
+      result[nama] += total;
+
+    });
+
+    let out = [];
+
+    for(let n in result){
+      out.push({
+        nama: n,
+        total: result[n]
+      });
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify(out))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+}
