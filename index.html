@@ -2,406 +2,229 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Ramadhan Checklist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lomba Ramadhan 1447 H</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: linear-gradient(180deg,#e8f5e9,#ffffff);
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
     }
-    .header {
-      background: linear-gradient(135deg,#0f9d58,#198754);
+
+    /* Header */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('ramadan1.png');
+      background-size: cover;
+      background-position: center;
       color: white;
-      padding: 20px;
-      border-radius: 0 0 20px 20px;
+      padding: 120px 20px;
       text-align: center;
     }
-    .card {
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.08);
-    }
-    .form-check-input {
-      width: 1.3em;
-      height: 1.3em;
-    }
-    
 
-    /* Tombol normal */
-    .btn-save {
-      background: linear-gradient(135deg, #0f9d58, #198754);
+    .hero h1 {
+      font-weight: 700;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-weight: 600;
+      color: #198754;
+    }
+
+    /* Card */
+    .card-custom {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      height: 100%;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-custom img {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .btn-custom {
+      background: #198754;
       color: white;
       border-radius: 30px;
-      padding: 12px;
-      font-size: 1.1rem;
-      border: none;
-      transition: 0.3s;
+      padding: 8px 20px;
     }
 
-    /* Hover */
-    .btn-save:hover {
-      background: linear-gradient(135deg, #0c7c46, #146c43);
+    .btn-custom:hover {
+      background: #157347;
       color: white;
     }
 
-    /* Saat loading / disabled */
-    .btn-save:disabled {
-      background: linear-gradient(135deg, #16a085, #27ae60);
+    /* Footer */
+    footer {
+      background: #198754;
       color: white;
-      opacity: 1; /* HILANGKAN efek pucat */
-      cursor: not-allowed;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
     }
-
-    .spinner-border {
-      color: white;
-    }
-
   </style>
 </head>
-
 <body>
 
-<div class="header mb-4">
-  <h4 class="fw-bold">
-    <i class="fas fa-moon"></i> Ramadhan Checklist
-  </h4>
-  <small>Catat amalan harian</small>
-</div>
-
-<div class="container pb-4">
-
-  <!-- NAMA -->
-  <div class="mb-3">
-    <label class="fw-semibold">
-      <i class="fas fa-user"></i> Nama
-    </label>
-    <select class="form-select" id="nama" name="nama" required>
-      <option value="">-- Pilih Nama --</option>
-      <option value="Mama">Mama</option>
-      <option value="Papa">Papa</option>
-      <option value="Bintang">Bintang</option>
-      <option value="Bulan">Bulan</option>
-      <option value="Satria">Satria</option>
-  </select>
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container">
+    <h1 class="mb-3">Lomba Ramadhan 1447 H</h1>
+    <p class="lead">
+      Mari semarakkan bulan suci Ramadhan dengan berbagai perlombaan Islami
+      untuk meningkatkan iman, ilmu, dan kreativitas generasi muslim.
+    </p>
   </div>
+</section>
 
-  <!-- TANGGAL -->
-
-<div class="mb-3">
-  <label class="fw-semibold">
-    <i class="fas fa-calendar-day"></i> Tanggal
-  </label>
-
-  <input
-    type="date"
-    class="form-control"
-    id="tanggal"
-    required
-   >
-</div>
-
-
-
-  <!-- PUASA -->
-  <div class="card mb-3">
-    <div class="card-body">
-      <h6 class="fw-bold text-success">
-        <i class="fas fa-sun"></i> Puasa
-      </h6>
-      <div class="form-check">
-        <input class="form-check-input" id="puasa" type="checkbox">
-        Menjalankan Puasa
-      </div>
+<!-- INTRO SECTION -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2>Semarak Ramadhan</h2>
+      <p>Ajang perlombaan Islami untuk anak-anak dan dewasa</p>
     </div>
-  </div>
 
-  <!-- SHOLAT WAJIB -->
-  <div class="card mb-3">
-    <div class="card-body">
-      <h6 class="fw-bold text-primary">
-        <i class="fas fa-mosque"></i> Sholat Wajib
-      </h6>
-      <div class="form-check"><input id="subuh" class="form-check-input" type="checkbox"> Subuh</div>
-      <div class="form-check"><input id="zuhur" class="form-check-input" type="checkbox"> Zuhur</div>
-      <div class="form-check"><input id="asar" class="form-check-input" type="checkbox"> Asar</div>
-      <div class="form-check"><input id="magrib" class="form-check-input" type="checkbox"> Magrib</div>
-      <div class="form-check"><input id="isya" class="form-check-input" type="checkbox"> Isya</div>
-      <div class="form-check"><input id="tarawih" class="form-check-input" type="checkbox"> Tarawih</div>
-    </div>
-  </div>
-
-  <!-- SUNNAH -->
-  <div class="card mb-3">
-    <div class="card-body">
-      <h6 class="fw-bold text-warning">
-        <i class="fas fa-star"></i> Sholat Sunnah
-      </h6>
-      <div class="form-check"><input id="duha" class="form-check-input" type="checkbox"> Duha</div>
-      <div class="form-check"><input id="tahajud" class="form-check-input" type="checkbox"> Tahajud</div>
-      <div class="form-check"><input id="rawatib" class="form-check-input" type="checkbox"> Rawatib</div>
-    </div>
-  </div>
-
-  <!-- QURAN -->
-  <div class="card mb-4">
-    <div class="card-body">
-      <h6 class="fw-bold text-success">
-        <i class="fas fa-quran"></i> Al-Qur'an
-      </h6>
-      <div class="form-check">
-        <input id="quran" class="form-check-input" type="checkbox">
-        Membaca Al-Qur'an
-      </div>
-    </div>
-  </div>
-
- 
-  <button id="btnSave" class="btn btn-save w-100" onclick="kirim()">
-  <i class="fas fa-save"></i> <span id="btnText">Simpan Amalan</span>
-  </button>
-
-  <hr class="my-4">
-
-  <h5 class="fw-bold text-center mb-3">
-    <i class="fas fa-chart-bar"></i> Dashboard Amalan
-  </h5>
-
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center" id="tabelDashboard">
-      <thead class="table-success">
-        <tr>
-          <th>Nama</th>
-          <th>Total Amalan</th>
-           <th>Point (Rp)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Data muncul di sini -->
-      </tbody>
-    </table>
-  </div>
-
-  </div>
-
-<script>
-const API_URL = "https://script.google.com/macros/s/AKfycbwhx1CQguzTjOHTc6TmW0q1FoCQfOcxeKbZYaQPPRj9hWI13pEwtZdQx6RUMCbe3gNa/exec";
-
-// Ambil nilai checkbox
-function v(id){ 
-  return document.getElementById(id).checked ? 1 : 0;
-}
-
-// tanggal hari 
-
- function setTanggalHariIni(){
- const today = new Date().toISOString().split("T")[0];
-  document.getElementById("tanggal").value = today;
- }
-
-
-// ====================== KIRIM DATA ======================
-function kirim(){
-
-  const btn = document.getElementById("btnSave");
-  const text = document.getElementById("btnText");
-
-  // Cegah klik dobel
-  btn.disabled = true;
-
-  // Loading
-  text.innerHTML = `
-    <span class="spinner-border spinner-border-sm me-2"></span>
-    Menyimpan...
-  `;
-
-
-  if (tanggal.value === "") {
-  alert("⚠️ Tanggal wajib diisi!");
-  btn.disabled = false;
-  text.innerHTML = "Simpan Amalan";
-  return;
-  }
-
-
-
-  // Validasi nama
-  if(nama.value === ""){
-    alert("⚠️ Silakan pilih nama dulu!");
-    btn.disabled = false;
-    text.innerHTML = "Simpan Amalan";
-    return;
-  }
-
-  // Validasi tanggal
-  if(tanggal.value === ""){
-    alert("⚠️ Silakan pilih tanggal!");
-    btn.disabled = false;
-    text.innerHTML = "Simpan Amalan";
-    return;
-  }
-
-const data = {
-  tanggal: document.getElementById("tanggal").value,
-  nama: nama.value,
-  puasa: v('puasa'),
-  subuh: v('subuh'),
-  zuhur: v('zuhur'),
-  asar: v('asar'),
-  magrib: v('magrib'),
-  isya: v('isya'),
-  tarawih: v('tarawih'),
-  duha: v('duha'),
-  tahajud: v('tahajud'),
-  rawatib: v('rawatib'),
-  quran: v('quran')
-};
-
-
-
-  fetch(API_URL, {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-
-  .then(res => res.json())
-
-  .then(() => {
-
-    // Modal sukses
-    const modal = new bootstrap.Modal(
-      document.getElementById("modalSukses")
-    );
-    modal.show();
-
-    resetForm();
-
-    // Refresh dashboard
-    loadDashboard();
-
-  })
-
-  .catch(() => {
-    alert("❌ Gagal menyimpan data!");
-  })
-
-  .finally(() => {
-
-    // Aktifkan tombol lagi
-    btn.disabled = false;
-    text.innerHTML = "Simpan Amalan";
-
-  });
-
-}
-
-
-// ====================== RESET FORM ======================
-function resetForm(){
-
-  document.querySelectorAll("input[type=checkbox]")
-    .forEach(el => el.checked = false);
-
-  nama.value = "";
-
-}
-
-
-// ====================== LOAD DASHBOARD ======================
-
-function loadDashboard(){
-
-  fetch(API_URL + "?mode=dashboard")
-  .then(res => res.json())
-  .then(data => {
-
-    const tbody = document.querySelector("#tabelDashboard tbody");
-    tbody.innerHTML = "";
-
-    if(!data || data.length === 0){
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="3" class="text-muted">
-            Belum ada data
-          </td>
-        </tr>
-      `;
-      return;
-    }
-
-    data.forEach(row => {
-
-      const point = row.total * 2000;
-
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.nama}</td>
-        <td class="fw-bold text-success">
-          ${row.total}
-        </td>
-        <td class="fw-bold text-primary">
-          Rp ${point.toLocaleString("id-ID")}
-        </td>
-      `;
-
-      tbody.appendChild(tr);
-    });
-
-  })
-  .catch(err => {
-    console.log("Dashboard error:", err);
-  });
-}
-
-
-
-// ====================== AUTO LOAD SAAT BUKA ======================
-
-document.addEventListener("DOMContentLoaded", function(){
-  setTanggalHariIni();   // set tanggal otomatis
-  loadDashboard();      // load dashboard
-});
-
-
-</script>
-
-
-<!-- Modal Sukses -->
-<div class="modal fade" id="modalSukses" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4">
-
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title">
-          <i class="fas fa-check-circle"></i> Berhasil
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body text-center py-4">
-        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-        <h5>Data Berhasil Disimpan</h5>
-        <p class="text-muted mb-0">
-          Terima kasih, amalan sudah tercatat.
+    <div class="row justify-content-center">
+      <div class="col-md-10 text-center">
+        <p>
+          Kegiatan Lomba Ramadhan 1447 H diselenggarakan untuk membangun karakter
+          Islami, meningkatkan kecintaan terhadap Al-Qur'an, serta menumbuhkan
+          semangat belajar dan beribadah di bulan penuh berkah ini.
         </p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="modal-footer justify-content-center">
-        <button class="btn btn-success px-4" data-bs-dismiss="modal">
-          OK
-        </button>
+<!-- COMPETITION SECTION -->
+<section class="py-5">
+  <div class="container">
+    <div class="section-title">
+      <h2>Cabang Lomba</h2>
+      <p>Pilih dan ikuti lomba favoritmu</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Quiz -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="quiz.png" alt="Quiz">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-circle-question"></i> Quiz Islami Mingguan</h5>
+            <p class="card-text">
+              Lomba kuis Islami setiap minggu untuk mengasah pengetahuan agama.
+            </p>
+            <a href="#" class="btn btn-custom">Ikuti Lomba</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tadarus Anak -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="ngaji1.png" alt="Tadarus Anak">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-book-quran"></i> Tadarus Anak</h5>
+            <p class="card-text">
+              Lomba membaca Al-Qur'an untuk anak-anak dengan tartil dan tajwid.
+            </p>
+            <a href="#" class="btn btn-custom">Daftar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tadarus Dewasa -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="ngaji2.png" alt="Tadarus Dewasa">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-quran"></i> Tadarus Dewasa</h5>
+            <p class="card-text">
+              Lomba tadarus Al-Qur'an kategori remaja dan dewasa.
+            </p>
+            <a href="#" class="btn btn-custom">Daftar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azan Anak -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="azan1.png" alt="Azan Anak">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-microphone"></i> Azan Anak</h5>
+            <p class="card-text">
+              Lomba adzan khusus anak-anak dengan suara merdu dan tartil.
+            </p>
+            <a href="#" class="btn btn-custom">Daftar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azan Dewasa -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="azan2.png" alt="Azan Dewasa">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-mosque"></i> Azan Dewasa</h5>
+            <p class="card-text">
+              Lomba adzan kategori remaja dan dewasa dengan penilaian profesional.
+            </p>
+            <a href="#" class="btn btn-custom">Daftar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kaligrafi Anak -->
+      <div class="col-12 col-md-6">
+        <div class="card card-custom">
+          <img src="kaligrafi.png" alt="Kaligrafi">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-solid fa-pen-nib"></i> Kaligrafi Anak</h5>
+            <p class="card-text">
+              Lomba seni kaligrafi Islami untuk anak-anak yang kreatif.
+            </p>
+            <a href="#" class="btn btn-custom">Daftar</a>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
-</div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FOOTER -->
+<footer>
+  <p class="mb-0">&copy; 2026 Lomba Ramadhan 1447 H | Panitia Ramadhan</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
