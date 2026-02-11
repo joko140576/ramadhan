@@ -179,6 +179,7 @@
         <tr>
           <th>Nama</th>
           <th>Total Amalan</th>
+           <th>Point (Rp)</th>
         </tr>
       </thead>
       <tbody>
@@ -313,53 +314,51 @@ function resetForm(){
 
 
 // ====================== LOAD DASHBOARD ======================
+
 function loadDashboard(){
 
   fetch(API_URL + "?mode=dashboard")
-
   .then(res => res.json())
-
   .then(data => {
 
     const tbody = document.querySelector("#tabelDashboard tbody");
-
     tbody.innerHTML = "";
 
     if(!data || data.length === 0){
-
       tbody.innerHTML = `
         <tr>
-          <td colspan="2" class="text-muted">
+          <td colspan="3" class="text-muted">
             Belum ada data
           </td>
         </tr>
       `;
       return;
-
     }
 
     data.forEach(row => {
 
-      const tr = document.createElement("tr");
+      const point = row.total * 2000;
 
+      const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${row.nama}</td>
         <td class="fw-bold text-success">
           ${row.total}
         </td>
+        <td class="fw-bold text-primary">
+          Rp ${point.toLocaleString("id-ID")}
+        </td>
       `;
 
       tbody.appendChild(tr);
-
     });
 
   })
-
   .catch(err => {
     console.log("Dashboard error:", err);
   });
-
 }
+
 
 
 // ====================== AUTO LOAD SAAT BUKA ======================
